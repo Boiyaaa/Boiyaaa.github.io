@@ -152,6 +152,36 @@ nav a.active,
   color: var(--on-dark);
 }
 
+/* Icons are decorative; translated labels remain separate. */
+.global-nav nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.global-nav .nav-icon {
+  display: block;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+}
+
+.global-nav .language-icon {
+  width: 18px;
+  height: 18px;
+  color: #40a9ed;
+}
+
+@media (min-width: 735px) and (max-width: 900px) {
+  .global-nav .bar {
+    gap: 24px;
+  }
+
+  .global-nav nav {
+    gap: 16px;
+  }
+}
+
 /* Language menu */
 
 .language {
@@ -168,11 +198,11 @@ nav a.active,
   gap: 5px;
 }
 
-#language svg {
+#language .language-chevron {
   transition: transform .2s;
 }
 
-#language[aria-expanded="true"] svg {
+#language[aria-expanded="true"] .language-chevron {
   transform: rotate(180deg);
 }
 
