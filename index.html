@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Yuanbo Tong — Home, visual storytelling, and intelligent agents. University of Auckland.">
+    <title>Yuanbo Tong · Home</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div class="bar">
+        <a href="#about" class="brand">Yuanbo<span>.</span></a>
+        <nav aria-label="Main navigation">
+          <a href="#about" class="active" aria-current="location" data-en="About" data-zh="关于">About</a>
+          <a href="#publications" data-en="Publications" data-zh="代表作">Publications</a>
+          <a href="#experience" data-en="Experience" data-zh="实习经历">Experience</a>
+          <a href="#education" data-en="Education" data-zh="教育">Education</a>
+          <a href="#contact" data-en="Contact" data-zh="联系">Contact</a>
+        </nav>
+        <div class="tools">
+          <button type="button" id="language" aria-label="切换为中文">中文</button>
+          <button type="button" id="theme" aria-label="Switch color theme" aria-pressed="false">◐</button>
+        </div>
+      </div>
+    </header>
+    <main class="layout">
+      <aside class="profile">
+        <div class="portrait" role="img" aria-label="Eason monogram">
+          <span>E.</span>
+        </div>
+        <h1>Eason</h1>
+        <p class="handle">@Boiyaaa</p>
+        <p class="role" data-en="Artificial Intelligence" data-zh="人工智能">Artificial Intelligence</p>
+        <p class="school" data-en="University of Auckland" data-zh="奥克兰大学">University of Auckland</p>
+        <div class="social">
+          <a href="mailto:yuanbo.tong@auckland.ac.nz">Email ↗</a>
+          <a href="https://github.com/Boiyaaa" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        </div>
+        <div class="aside-block">
+          <h2 data-en="Research interests" data-zh="研究兴趣">Research interests</h2>
+          <ul>
+            <li data-en="Multimodal Generative AI" data-zh="多模态生成式人工智能">Multimodal Generative AI</li>
+            <li data-en="Visual Storytelling" data-zh="视觉叙事">Visual Storytelling</li>
+            <li data-en="Personality Modeling" data-zh="人格建模">Personality Modeling</li>
+            <li data-en="AI Agents" data-zh="人工智能体">AI Agents</li>
+            <li data-en="AI Software Testing" data-zh="人工智能软件测试">AI Software Testing</li>
+          </ul>
+        </div>
+        <p class="location" data-en="Auckland, New Zealand" data-zh="新西兰 · 奥克兰">Auckland, New Zealand</p>
+      </aside>
+      <div class="content">
+        <section id="about" class="intro">
+          <p class="eyebrow" data-en="About / Research & Engineering" data-zh="关于 / 研究与实践">About / Research & Engineering</p>
+          <h2 data-en="Exploring intelligence.<br>Creating <em>consistency.</em>" data-zh="探索智能，<br>让生成保持<em>一致。</em>">Exploring intelligence.<br>Creating <em>consistency.</em></h2>
+          <p data-en="My background is in <strong>Artificial Intelligence at the University of Auckland</strong>. I work on multimodal generation, with a particular interest in how AI can preserve character personality across visual stories." data-zh="我的学术背景是<strong>奥克兰大学人工智能专业</strong>。我关注多模态生成，尤其是如何让 AI 在连续的视觉叙事中保持角色人格的一致性。">My background is in <strong>Artificial Intelligence at the University of Auckland</strong>. I work on multimodal generation, with a particular interest in how AI can preserve character personality across visual stories.</p>
+          <p data-en="My research explores personality-consistent visual storytelling and prototype-guided personality inference from text. During my internship at iFLYTEK’s Chongqing branch, I helped develop a novel analytics platform spanning data collection, sentiment analysis, and interactive visualization." data-zh="我的研究关注人格一致的视觉叙事，以及原型引导的文本人格推断。在科大讯飞重庆分公司实习期间，我参与了小说数据分析平台的开发，涵盖数据采集、情感分析与交互式可视化。">My research explores personality-consistent visual storytelling and prototype-guided personality inference from text. During my internship at iFLYTEK’s Chongqing branch, I helped develop a novel analytics platform spanning data collection, sentiment analysis, and interactive visualization.</p>
+          <p><a class="text-link" href="mailto:yuanbo.tong@auckland.ac.nz" data-en="Get in touch ↗" data-zh="通过邮件联系我 ↗">Get in touch ↗</a></p>
+        </section>
+        <section id="publications">
+          <div class="section-head">
+            <h2><span class="num">01</span><span data-en="Research Publications" data-zh="代表作">Research Publications</span></h2>
+            <span class="caption" data-en="Personality in vision & language" data-zh="视觉与语言中的人格建模">Personality in vision & language</span>
+          </div>
+          <article class="paper">
+            <div class="stamp">
+              EMNLP<span>2026</span><span data-en="Main track" data-zh="主会论文">Main track</span>
+            </div>
+            <div>
+              <h3>Trait Collapse in Text-to-Image Generation: Evaluating and Mitigating Personality Inconsistency in Visual Storytelling</h3>
+              <p class="paper-authors"><strong>Yuanbo Tong</strong>, Haoyuan Li, Jibiao Jiang, Zirui Wang, Yuchen Li, and Jiamou Liu</p>
+              <p data-en="Identifies trait collapse: generated characters retain their appearance but lose personality-consistent behavior across scenes. Introduces ViStoryBench-Personality for evaluation and the training-free Trait–Behavior–Visual (TBV) framework, which translates personality traits into behavioral tendencies and renderable visual constraints." data-zh="揭示文生图中的“人格特质坍缩”：生成角色虽然保持了外观一致，行为却未能持续体现其人格。提出 ViStoryBench-Personality 评测基准，以及无需训练的 Trait–Behavior–Visual（TBV）框架，将人格特质逐步转化为行为倾向和可渲染的视觉约束。">Identifies trait collapse: generated characters retain their appearance but lose personality-consistent behavior across scenes. Introduces ViStoryBench-Personality for evaluation and the training-free Trait–Behavior–Visual (TBV) framework, which translates personality traits into behavioral tendencies and renderable visual constraints.</p>
+              <div class="tags">
+                <span data-en="Text-to-Image" data-zh="文生图">Text-to-Image</span>
+                <span data-en="Personality Consistency" data-zh="人格一致性">Personality Consistency</span>
+                <span data-en="Training-free" data-zh="无需训练">Training-free</span>
+              </div>
+            </div>
+          </article>
+          <article class="paper">
+            <div class="stamp">
+              arXiv<span data-en="Preprint" data-zh="预印本">Preprint</span>
+            </div>
+            <div>
+              <h3>Cognitive alignment in personality reasoning: Leveraging prototype theory for MBTI inference</h3>
+              <p class="paper-authors">
+                Haoyuan Li,
+                <strong>Yuanbo Tong</strong>,
+                Yuchen Li,
+                Zirui Wang,
+                Maoyuan Li,
+                Zhongsheng Wang,
+                Chunhou Liu, and
+                Jiamou Liu
+              </p>
+              <p data-en="A prototype-guided framework for inferring MBTI from social-media text. Builds a balanced, quality-controlled prototype library and guides language models through a retrieve–reuse–revise–retain cycle, supporting interpretable personality predictions. Evaluated on the Kaggle and Pandora benchmarks." data-zh="面向社交媒体文本的原型引导 MBTI 推断框架。构建均衡且经过质量控制的原型库，通过“检索—复用—修正—保留”循环引导语言模型推理，支持可解释的人格预测，并在 Kaggle 与 Pandora 基准上进行评估。">A prototype-guided framework for inferring MBTI from social-media text. Builds a balanced, quality-controlled prototype library and guides language models through a retrieve–reuse–revise–retain cycle, supporting interpretable personality predictions. Evaluated on the Kaggle and Pandora benchmarks.</p>
+              <div class="tags">
+                <span>MBTI</span>
+                <span data-en="Retrieval-Augmented Reasoning" data-zh="检索增强推理">Retrieval-Augmented Reasoning</span>
+                <span data-en="Prototype Learning" data-zh="原型学习">Prototype Learning</span>
+              </div>
+            </div>
+          </article>
+        </section>
+        <section id="experience">
+          <div class="section-head">
+            <h2><span class="num">02</span><span data-en="Internship Experience" data-zh="实习经历">Internship Experience</span></h2>
+          </div>
+          <article class="experience">
+            <div class="experience-heading">
+              <div>
+                <h3 data-en="iFLYTEK Chongqing Branch" data-zh="科大讯飞重庆分公司">iFLYTEK Chongqing Branch</h3>
+                <p data-en="Software Development Intern" data-zh="软件开发实习生">Software Development Intern</p>
+              </div>
+              <p class="experience-dates"><time datetime="2024-03">2024.03</time>–<time datetime="2024-05">2024.05</time></p>
+            </div>
+            <p data-en="Contributed to the design and development of a novel analytics platform, working with the team across data collection, analytical modeling, visualization, and front-end implementation." data-zh="参与小说数据分析平台的设计与开发，与团队协作完成从数据采集、分析建模到可视化展示和前端实现的完整项目。">Contributed to the design and development of a novel analytics platform, working with the team across data collection, analytical modeling, visualization, and front-end implementation.</p>
+            <ul class="experience-details">
+              <li data-en="<strong>Data collection:</strong> Developed Python crawlers to retrieve novels and user reviews from Hongxiu Novels, using regular expressions and data cleaning to improve data quality and timeliness." data-zh="<strong>数据采集：</strong>开发 Python 爬虫，自动采集红袖小说的小说与用户评论，结合正则表达式和数据清洗提升数据质量与时效性。"><strong>Data collection:</strong> Developed Python crawlers to retrieve novels and user reviews from Hongxiu Novels, using regular expressions and data cleaning to improve data quality and timeliness.</li>
+              <li data-en="<strong>Visualization analysis:</strong> Used Matplotlib to analyze and visualize novel category distributions, popularity trends, and user sentiment patterns." data-zh="<strong>可视化分析：</strong>使用 Matplotlib 分析并展示小说类别分布、热度趋势与用户情感模式。"><strong>Visualization analysis:</strong> Used Matplotlib to analyze and visualize novel category distributions, popularity trends, and user sentiment patterns.</li>
+              <li data-en="<strong>Sentiment analysis:</strong> Fine-tuned pretrained BERT models to classify positive and negative sentiment in novel reviews and improve analytical accuracy." data-zh="<strong>情感分析：</strong>微调 BERT 预训练模型，对小说评论进行正负向情感分类，提升分析准确性。"><strong>Sentiment analysis:</strong> Fine-tuned pretrained BERT models to classify positive and negative sentiment in novel reviews and improve analytical accuracy.</li>
+              <li data-en="<strong>Front-end development:</strong> Built an interactive dashboard with React and ECharts to display analysis results in real time through dynamic charts." data-zh="<strong>前端开发：</strong>使用 React 与 ECharts 构建交互式数据看板，通过动态图表实时展示分析结果。"><strong>Front-end development:</strong> Built an interactive dashboard with React and ECharts to display analysis results in real time through dynamic charts.</li>
+              <li data-en="<strong>Applied skills:</strong> Integrated Python, NLP, machine learning, data visualization, and front-end development across the AI project development and deployment lifecycle." data-zh="<strong>综合实践：</strong>将 Python、自然语言处理、机器学习、数据可视化与前端开发应用于 AI 项目开发和部署的完整流程。"><strong>Applied skills:</strong> Integrated Python, NLP, machine learning, data visualization, and front-end development across the AI project development and deployment lifecycle.</li>
+            </ul>
+            <div class="tags">
+              <span>Python</span><span>Matplotlib</span><span>BERT</span><span>React</span><span>ECharts</span>
+            </div>
+          </article>
+        </section>
+        <section id="education">
+          <div class="section-head">
+            <h2><span class="num">03</span><span data-en="Education" data-zh="教育背景">Education</span></h2>
+          </div>
+          <article class="education">
+            <div>
+              <h3 data-en="University of Auckland" data-zh="奥克兰大学">University of Auckland</h3>
+              <p data-en="PhD in Computer Science" data-zh="计算机科学博士（在读）">PhD in Computer Science</p>
+              <p data-en="Supervisors: Dr Hong Jia, Dr Xinyu Zhang, and Associate Professor Jing Sun" data-zh="导师：Hong Jia 博士、Xinyu Zhang 博士及 Jing Sun 副教授">Supervisors: Dr Hong Jia, Dr Xinyu Zhang, and Associate Professor Jing Sun</p>
+            </div>
+            <p class="education-dates"><time datetime="2026-10" data-en="Oct 2026" data-zh="2026 年 10 月">Oct 2026</time> – <span data-en="Present" data-zh="至今">Present</span></p>
+          </article>
+          <article class="education">
+            <div>
+              <h3 data-en="University of Auckland" data-zh="奥克兰大学">University of Auckland</h3>
+              <p data-en="Master of Artificial Intelligence" data-zh="人工智能硕士">Master of Artificial Intelligence</p>
+              <p class="education-honors" data-en="First Class Honours" data-zh="一等荣誉">First Class Honours</p>
+            </div>
+            <p class="education-dates"><time datetime="2024">2024</time>–<time datetime="2026">2026</time></p>
+          </article>
+          <article class="education">
+            <div>
+              <h3 data-en="Southwest University" data-zh="西南大学">Southwest University</h3>
+              <p data-en="Bachelor’s Degree in Computer Science and Technology" data-zh="计算机科学与技术学士">Bachelor’s Degree in Computer Science and Technology</p>
+            </div>
+            <p class="education-dates"><time datetime="2021">2021</time>–<time datetime="2025">2025</time></p>
+          </article>
+        </section>
+        <section class="contact" id="contact">
+          <div class="section-head">
+            <h2><span class="num">04</span><span data-en="Let’s connect." data-zh="保持联系。">Let’s connect.</span></h2>
+          </div>
+          <p data-en="For research discussions and collaboration, reach me by email." data-zh="欢迎通过邮件交流研究想法与合作机会。">For research discussions and collaboration, reach me by email.</p>
+          <a href="mailto:yuanbo.tong@auckland.ac.nz">yuanbo.tong@auckland.ac.nz ↗</a>
+        </section>
+      </div>
+    </main>
+    <footer>
+      <span>© <span id="year">2026</span> Eason</span><a href="#about" data-en="Back to top ↑" data-zh="回到顶部 ↑">Back to top ↑</a>
+    </footer>
+  </body>
+</html>
