@@ -8,13 +8,6 @@
     <title>Yuanbo Tong</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
-    <script>
-      // Apply the saved theme before first paint to avoid a flash.
-      try {
-        const theme = localStorage.getItem('homepage-theme');
-        if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme;
-      } catch {}
-    </script>
     <script src="script.js" defer></script>
   </head>
   <body>
@@ -28,11 +21,15 @@
           <a href="#education" data-en="Education" data-zh="教育">Education</a>
           <a href="#contact" data-en="Contact" data-zh="联系">Contact</a>
         </nav>
-        <div class="tools">
-          <button type="button" id="language" aria-label="切换为中文">中文</button>
-          <button type="button" id="theme" aria-label="Switch color theme" aria-pressed="false">
-            <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/></svg>
+        <div class="language">
+          <button type="button" id="language" aria-haspopup="true" aria-expanded="false" aria-controls="language-menu">
+            Language
+            <svg viewBox="0 0 12 12" width="9" height="9" aria-hidden="true"><path d="M2 4.5 6 8l4-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
+          <ul id="language-menu" class="language-menu" hidden>
+            <li><button type="button" data-language="zh" lang="zh-CN">中文</button></li>
+            <li><button type="button" data-language="en" lang="en">English</button></li>
+          </ul>
         </div>
       </div>
     </header>

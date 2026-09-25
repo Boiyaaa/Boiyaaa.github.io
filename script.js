@@ -3,11 +3,12 @@
 
   const root = document.documentElement;
   const languageButton = document.querySelector('#language');
-  const themeButton = document.querySelector('#theme');
+  const languageMenu = document.querySelector('#language-menu');
+  const languageOptions = [...languageMenu.querySelectorAll('[data-language]')];
   const translations = document.querySelectorAll('[data-en][data-zh]');
   const navigationLinks = [...document.querySelectorAll('nav a')];
-  const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
   let language = 'en';
+  let refreshNavigation = () => {};
 
   // Storage can be unavailable when opening the page locally or in private mode.
   function readPreference(key) {
@@ -35,25 +36,45 @@
       element.innerHTML = element.dataset[language];
     });
 
-    languageButton.textContent = language === 'en' ? '中文' : 'EN';
-    languageButton.setAttribute('aria-label', language === 'en' ? '切换为中文' : 'Switch to English');
-    themeButton.setAttribute('aria-label', language === 'en' ? 'Switch color theme' : '切换深浅色主题');
+    languageOptions.forEach((option) => {
+      option.setAttribute('aria-current', String(option.dataset.language === language));
+    });
+    languageButton.setAttribute('aria-label', language === 'en' ? 'Language: English' : '语言：中文');
     document.querySelector('nav').setAttribute('aria-label', language === 'en' ? 'Main navigation' : '主导航');
   }
 
-  // Without a saved choice the page follows the system theme.
-  function isDark() {
-    const theme = root.dataset.theme;
-    return theme ? theme === 'dark' : systemDark.matches;
+  function setMenuOpen(open) {
+    languageMenu.hidden = !open;
+    languageButton.setAttribute('aria-expanded', String(open));
   }
 
-  function setTheme(value) {
-    if (value === 'light' || value === 'dark') {
-      root.dataset.theme = value;
-    } else {
-      delete root.dataset.theme;
-    }
-    themeButton.setAttribute('aria-pressed', String(isDark()));
+  function initializeLanguageMenu() {
+    languageButton.addEventListener('click', () => {
+      const open = languageMenu.hidden;
+      setMenuOpen(open);
+      if (open) languageMenu.querySelector('[aria-current="true"]').focus();
+    });
+
+    languageOptions.forEach((option) => {
+      option.addEventListener('click', () => {
+        setLanguage(option.dataset.language);
+        savePreference('language', language);
+        setMenuOpen(false);
+        languageButton.focus();
+        refreshNavigation();
+      });
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!event.target.closest('.language')) setMenuOpen(false);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !languageMenu.hidden) {
+        setMenuOpen(false);
+        languageButton.focus();
+      }
+    });
   }
 
   function setActiveSection(id) {
@@ -97,26 +118,13 @@
 
     window.addEventListener('scroll', scheduleUpdate, { passive: true });
     window.addEventListener('resize', scheduleUpdate);
-    languageButton.addEventListener('click', scheduleUpdate);
+    refreshNavigation = scheduleUpdate;
     update();
   }
 
   setLanguage(readPreference('language'));
-  setTheme(readPreference('theme'));
   document.querySelector('#year').textContent = new Date().getFullYear();
 
-  languageButton.addEventListener('click', () => {
-    setLanguage(language === 'en' ? 'zh' : 'en');
-    savePreference('language', language);
-  });
-
-  themeButton.addEventListener('click', () => {
-    const nextTheme = isDark() ? 'light' : 'dark';
-    setTheme(nextTheme);
-    savePreference('theme', nextTheme);
-  });
-
-  systemDark.addEventListener('change', () => setTheme(root.dataset.theme));
-
+  initializeLanguageMenu();
   initializeNavigation();
 })();
