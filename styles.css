@@ -340,6 +340,17 @@ nav a.active,
   margin: 24px 0 32px;
 }
 
+.actions a {
+  gap: 7px;
+}
+
+.actions .action-icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
 .interests h2 {
   font-family: var(--text);
   font-size: 14px;
