@@ -1,10 +1,12 @@
 (() => {
   'use strict';
 
+  const root = document.documentElement;
   const languageButton = document.querySelector('#language');
   const themeButton = document.querySelector('#theme');
   const translations = document.querySelectorAll('[data-en][data-zh]');
   const navigationLinks = [...document.querySelectorAll('nav a')];
+  const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
   let language = 'en';
 
   // Storage can be unavailable when opening the page locally or in private mode.
@@ -26,10 +28,10 @@
 
   function setLanguage(value) {
     language = value === 'zh' ? 'zh' : 'en';
-    document.documentElement.lang = language === 'zh' ? 'zh-CN' : 'en';
+    root.lang = language === 'zh' ? 'zh-CN' : 'en';
 
     translations.forEach((element) => {
-      // These translations are trusted, locally authored HTML (em, strong, br).
+      // These translations are trusted, locally authored HTML (em, strong, span).
       element.innerHTML = element.dataset[language];
     });
 
@@ -39,10 +41,19 @@
     document.querySelector('nav').setAttribute('aria-label', language === 'en' ? 'Main navigation' : '主导航');
   }
 
+  // Without a saved choice the page follows the system theme.
+  function isDark() {
+    const theme = root.dataset.theme;
+    return theme ? theme === 'dark' : systemDark.matches;
+  }
+
   function setTheme(value) {
-    const dark = value === 'dark';
-    document.body.classList.toggle('dark', dark);
-    themeButton.setAttribute('aria-pressed', String(dark));
+    if (value === 'light' || value === 'dark') {
+      root.dataset.theme = value;
+    } else {
+      delete root.dataset.theme;
+    }
+    themeButton.setAttribute('aria-pressed', String(isDark()));
   }
 
   function setActiveSection(id) {
@@ -58,17 +69,18 @@
   }
 
   function initializeNavigation() {
-    const sections = [...document.querySelectorAll('main section[id]')];
+    const sections = navigationLinks
+      .map((link) => document.querySelector(link.hash))
+      .filter(Boolean);
     let pending = false;
 
-    function updateActiveSection() {
+    function update() {
       const marker = window.innerHeight * 0.3;
       let activeSection = sections[0];
       for (const section of sections) {
         if (section.getBoundingClientRect().top <= marker) activeSection = section;
       }
-      // The last section may be too short to reach the marker at the page bottom.
-      const root = document.documentElement;
+      // The contact footer is too short to reach the marker at the page bottom.
       if (root.scrollHeight > window.innerHeight &&
           window.scrollY + window.innerHeight >= root.scrollHeight - 2) {
         activeSection = sections[sections.length - 1];
@@ -80,13 +92,13 @@
     function scheduleUpdate() {
       if (pending) return;
       pending = true;
-      window.requestAnimationFrame(updateActiveSection);
+      window.requestAnimationFrame(update);
     }
 
     window.addEventListener('scroll', scheduleUpdate, { passive: true });
     window.addEventListener('resize', scheduleUpdate);
     languageButton.addEventListener('click', scheduleUpdate);
-    updateActiveSection();
+    update();
   }
 
   setLanguage(readPreference('language'));
@@ -99,10 +111,12 @@
   });
 
   themeButton.addEventListener('click', () => {
-    const nextTheme = document.body.classList.contains('dark') ? 'light' : 'dark';
+    const nextTheme = isDark() ? 'light' : 'dark';
     setTheme(nextTheme);
     savePreference('theme', nextTheme);
   });
+
+  systemDark.addEventListener('change', () => setTheme(root.dataset.theme));
 
   initializeNavigation();
 })();
